@@ -1,29 +1,28 @@
 import React from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 
-const Home: React.FC = (props: any) => {
+import { HomeWrapper, TitleHome, SubtitleHome, ListHome } from '../styles/pages/Home'
+
+const Home: React.FC = () => {
   return (
-    <div>
+    <HomeWrapper>
       <Head>
-        <title>Create Next App</title>
+        <title>Learn NextJs</title>
       </Head>
 
-      <main>
-        <h1>{props.data}</h1>
-      </main>
+      <TitleHome>Next Project</TitleHome>
+      <SubtitleHome>This project was developed to learn NextJs framework, below has a list projects.</SubtitleHome>
 
-    </div>
-  );
-}
-
-export async function getStaticProps() {
-  const response = await fetch(`http://localhost:3000/api/cards/flag/4532894694415907`);
-  const data = await response.json();
-  return {
-    props: {
-      data: data.flagCard
-    }
-  }
+      <ListHome>
+        <li>
+          <Link href={`/card`}>
+            <a>Card Interative.</a>
+          </Link>
+        </li>
+      </ListHome>
+    </HomeWrapper>
+  )
 }
 
 export default Home;

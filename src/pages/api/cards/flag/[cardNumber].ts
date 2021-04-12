@@ -14,7 +14,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     hipercard: /^(606282\d{10}(\d{3})?)|(3841\d{15})/,
     elo: /^((((636368)|(438935)|(504175)|(451416)|(636297))\d{0,10})|((5067)|(4576)|(4011))\d{0,12})/,
     jcb: /^(?:2131|1800|35\d{3})\d{11}/,
-    aura: /^(5078\d{2})(\d{2})(\d{11})$/
   };
 
   for (var flag in cards) {
