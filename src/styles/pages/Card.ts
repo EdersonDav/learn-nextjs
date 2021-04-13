@@ -10,18 +10,7 @@ export const CardWrapper = styled.section`
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: #1c1c25;
-
-  &::before{
-    content:'';
-    position: absolute;
-    bottom: -40%;
-    left: 40%;
-    width: 600px;
-    height: 600px;
-    background: linear-gradient(#0f0, #ff0);
-    border-radius: 50%;
-  }
+  background: conic-gradient(#00d67c .1turn, #007c02, #00d67c 326deg);
 `;
 
 export const Card = styled.div`
@@ -40,12 +29,9 @@ export const FrontCard = styled.div<IRotation>`
   height: 100%;
   box-shadow: 0 15px 35px rgba(0,0,0,0.5);
   border-radius: 15px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  transform-style: preserve-3d;
   transition: 1s;
-  backface-visibility: hidden;
-  ${(props: { rotate?: boolean }) => props.rotate ? 'transform:rotateY(180deg)' : 'none'};
+  background-color: #a0a0a0;
+  ${(props: { rotate?: boolean }) => props.rotate ? 'transform:rotateY(180deg)' : ''}
 `;
 
 export const CardType = styled.h3`
@@ -88,6 +74,9 @@ export const InputDate = styled(InputMask)`
   color: #fff;
   font-weight: 300;
   line-height: 1em;
+  letter-spacing: 6px;
+  font-size: 15px;
+  text-shadow: 0 2px 1px #0005;
 `;
 
 export const LabelValid = styled.label`
@@ -100,6 +89,8 @@ export const LabelValid = styled.label`
   color: #fff;
   font-weight: 300;
   line-height: 1em;
+  font-size: 18px;
+  text-shadow: 0 2px 1px #0005;
 `;
 
 export const InputName = styled.input`
@@ -111,6 +102,8 @@ export const InputName = styled.input`
   font-size: 16px;
   letter-spacing: 2px;
   width: 90%;
+  font-size: 18px;
+  text-shadow: 0 2px 1px #0005;
 `;
 
 export const BackCard = styled.div<IRotation>`
@@ -121,20 +114,18 @@ export const BackCard = styled.div<IRotation>`
   height: 100%;
   box-shadow: 0 15px 35px rgba(0,0,0,0.5);
   border-radius: 15px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  transform-style: preserve-3d;
+  background-color: #a0a0a0;
   transition: 1s;
-  backface-visibility: hidden;
-  ${(props: { rotate?: boolean }) => props.rotate ? 'transform: rotateY(360deg)' : 'transform: rotateY(180deg)'};
+  ${(props: { rotate?: boolean }) => props.rotate ? 'transform: rotateY(360deg);' : 'transform: rotateY(180deg)'}
 `;
 
 export const Blackbar = styled.div`
   position: absolute;
   top: 40px;
-  width: 100%;
+  width: 99.70%;
   height: 60px;
   background: #000;
+  left: 1px;
 `;
 
 export const CVVText = styled.div`
@@ -193,3 +184,14 @@ export const ButtonFlipCard = styled.button`
   font-size: 47px;
 `;
 
+export const ImageChip = styled.div`
+  position: absolute;
+  top: 80px;
+  left: 50px;
+`
+
+export const FlagCard = styled.div`
+  position: absolute;
+  bottom: 29px;
+  right: 53px;
+`

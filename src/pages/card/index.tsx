@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BiCreditCardFront, BiCreditCard } from 'react-icons/bi';
+import Image from 'next/image';
 
 import {
   CardWrapper,
@@ -17,25 +18,52 @@ import {
   BackCard,
   InputCvv,
   ButtonFlipCard,
-  LabelValid
+  LabelValid,
+  ImageChip,
+  FlagCard
 } from '../../styles/pages/Card';
 
 const CardInterative: React.FC = () => {
   const [rotation, setRotation] = useState<boolean>(false);
+  const [flag, setFlag] = useState<string>('');
+
+  const handleFlag = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.split('_')[0]
+
+    if (value.length === 7) {
+      const response = await fetch(`http://localhost:3000/api/cards/flag/${value.replace(' ', '')}0000000000`);
+      const data = await response.json()
+      setFlag(data.flagCard);
+    }
+    if (value.length < 7) {
+      setFlag('');
+    }
+  }
 
   return (
     <CardWrapper>
       <Card>
-        <ButtonFlipCard onClick={() => setRotation(!rotation)}>{!rotation ? <BiCreditCard /> : <BiCreditCardFront />}</ButtonFlipCard>
+        <ButtonFlipCard onClick={() => setRotation(!rotation)}>{true ? <BiCreditCard /> : <BiCreditCardFront />}</ButtonFlipCard>
         <FrontCard rotate={rotation}>
-          <CardType>Debit Card</CardType>
-          <BankName>Bank KML-Cred</BankName>
-          {/* <img src="img/chip.png" class="chip"> */}
+          <CardType>Credit Card</CardType>
+          <BankName>Dev Bank</BankName>
+          <ImageChip>
+            <Image
+              priority
+              src="/images/chip.png"
+              alt='chip'
+              width={64}
+              height={46}
+            />
+          </ImageChip>
+
           <InputNumber
             autoComplete="off"
             name="cardNumber"
             mask='9999 9999 9999 9999'
             placeholder="0000 0000 0000 0000"
+            maskPlaceholder={null}
+            onChange={(e) => handleFlag(e)}
           />
 
           <LabelValid>Valid</LabelValid>
@@ -48,7 +76,20 @@ const CardInterative: React.FC = () => {
 
           <InputName autoComplete="off" name="cardName" type="text" placeholder='Card Holder Name' />
 
-          {/* <img src="img/chip.png" class="chip"> */}
+          {flag ? (
+            <FlagCard>
+              <Image
+                priority
+                src={`/images/${flag}.png`}
+                alt='chip'
+                width={64}
+                height={46}
+              />
+            </FlagCard>
+          ) : (
+            <span></span>
+          )}
+
         </FrontCard>
         <BackCard rotate={rotation}>
           <Blackbar></Blackbar>
