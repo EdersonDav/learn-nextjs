@@ -2,7 +2,12 @@ import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 
-import { HomeWrapper, TitleHome, SubtitleHome, ListHome } from '../styles/pages/Home'
+import {
+  HomeWrapper,
+  TitleHome,
+  SubtitleHome,
+  ListHome,
+} from '../styles/pages/Home';
 
 const Home: React.FC = () => {
   return (
@@ -12,7 +17,10 @@ const Home: React.FC = () => {
       </Head>
 
       <TitleHome>Next Project</TitleHome>
-      <SubtitleHome>This project was developed to learn NextJs framework, below has a list projects.</SubtitleHome>
+      <SubtitleHome>
+        This project was developed to learn NextJs framework, below has a list
+        projects.
+      </SubtitleHome>
 
       <ListHome>
         <li>
@@ -20,9 +28,14 @@ const Home: React.FC = () => {
             <a>Card Interative.</a>
           </Link>
         </li>
+        <li>
+          <Link href={`/gauge`}>
+            <a>Gauge Chart.</a>
+          </Link>
+        </li>
       </ListHome>
     </HomeWrapper>
-  )
-}
+  );
+};
 
 export default Home;

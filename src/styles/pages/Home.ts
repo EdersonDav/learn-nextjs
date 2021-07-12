@@ -21,6 +21,9 @@ export const SubtitleHome = styled.h3`
 
 export const ListHome = styled.ol`
   margin-left: 25px;
+  li{
+    margin-bottom: 30px;
+  }
   a{
     font-style: none;
     color: #000;
